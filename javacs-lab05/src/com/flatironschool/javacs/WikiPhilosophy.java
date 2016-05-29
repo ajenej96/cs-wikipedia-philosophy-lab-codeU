@@ -62,6 +62,7 @@ public class WikiPhilosophy {
 		Elements links = paragraph.select("a");
 		int index = 0;
 		Iterable<Node> iter = new WikiNodeIterable(paragraph);
+
 		if(urlList.contains(philosophyUrl)){
 			return;
 		}
