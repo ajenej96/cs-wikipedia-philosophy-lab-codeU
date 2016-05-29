@@ -32,8 +32,11 @@ public class WikiFetcher {
 		// select the content text and pull out the paragraphs.
 		Element content = doc.getElementById("mw-content-text");
 		
-		// TODO: avoid selecting paragraphs from sidebars and boxouts
 		Elements paras = content.select("p");
+		paras.select("div").remove();
+		paras.select("b").remove();
+		paras.select("i").remove();
+		paras.select("em").remove();
 		return paras;
 	}
 
@@ -56,7 +59,7 @@ public class WikiFetcher {
 		File input = new File(dirname, realURL.getPath());
 		Document doc = Jsoup.parse(input, "UTF-8", input.getName());
 		
-		// TODO: factor out the following repeated code
+		//fetchWikipedia(url);
 		Element content = doc.getElementById("mw-content-text");
 		Elements paras = content.select("p");
 		return paras;
